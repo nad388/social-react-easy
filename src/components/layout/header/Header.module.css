@@ -1,0 +1,41 @@
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 2px solid white;
+	padding: 14px;
+}
+
+.header > .imageWrapper {
+	width: 30%;
+}
+
+.header > .imageWrapper > img {
+	margin-left: 22px;
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+}
+
+.header .wrapper {
+	display: flex;
+	align-items: center;
+	padding: 8px;
+	width: calc(75% - 10px);
+	border: 1px solid gray;
+	border-radius: 50px;
+	color: white;
+}
+.header .wrapper > input {
+	background-color: transparent;
+	border: none;
+	width: 100%;
+	color: white;
+	outline: none;
+	font-size: 16px;
+}
+
+.header .wrapper > svg {
+	padding-right: 10px;
+	color: gray;
+}
