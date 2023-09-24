@@ -1,4 +1,5 @@
 import { Grid } from '@mui/material'
+import { useAuth } from '../providers/useAuth'
 import Header from './header/Header'
 import Sidebar from './sidebar/Sidebar'
 
@@ -7,6 +8,7 @@ type child = {
 }
 
 const Layout = ({ children }: child) => {
+	const { user } = useAuth()
 	return (
 		<>
 			<Header />
@@ -17,10 +19,12 @@ const Layout = ({ children }: child) => {
 				marginTop={2}
 				maxWidth={1400} //?
 			>
-				<Grid item md={3}>
-					<Sidebar />
-				</Grid>
-				<Grid item md={9}>
+				{user && (
+					<Grid item md={3}>
+						<Sidebar />
+					</Grid>
+				)}
+				<Grid item md={user ? 9 : 12}>
 					{children}
 				</Grid>
 			</Grid>

@@ -1,8 +1,8 @@
 import firebase from 'firebase/compat/app'
-import React, { createContext } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
-import Layout from './components/layout/Layout'
+import { AuthProvider } from './components/providers/AuthProvider'
 import RoutesPage from './components/routes/Routes'
 import './index.css'
 
@@ -16,16 +16,15 @@ firebase.initializeApp({
 	appId: '1:731588394542:web:b2d770afa2cf627cc629bf',
 })
 
-
-
-
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
+	// <Layout>
 	<React.StrictMode>
 		<BrowserRouter>
-			<Layout>
+			<AuthProvider>
 				<RoutesPage />
-			</Layout>
+			</AuthProvider>
 		</BrowserRouter>
 	</React.StrictMode>
+	// </Layout>
 )

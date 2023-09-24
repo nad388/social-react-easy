@@ -2,6 +2,7 @@ import { Box } from '@mui/material'
 import { FC, KeyboardEvent, useState } from 'react'
 import { IPost, TypeSetState } from '../../../types'
 import { users } from '../../layout/sidebar/dataUsers'
+import { useAuth } from '../../providers/useAuth'
 
 interface IAddPost {
 	setPosts: TypeSetState<IPost[]>
@@ -9,12 +10,13 @@ interface IAddPost {
 
 const AddPost: FC<IAddPost> = ({ setPosts }) => {
 	const [content, setContent] = useState<string>('')
+	const {user} = useAuth()
 
 	const addPostHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-		if (e.key === 'Enter') {
+		if (e.key === 'Enter' && user) {
 			setPosts(prev => [
 				{
-					author: users[0],
+					author: user,
 					content,
 					createdAt: 'today',
 				},
